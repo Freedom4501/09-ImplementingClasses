@@ -88,11 +88,16 @@ class Point(object):
     def closer_to(self,p2,p3):
         p2 = Point(p2.x, p2.y)
         p3 = Point(p3.x, p3.y)
-        if math.sqrt((p2.x-self.x)**2+(p2.y-self.y)**2) <= (math.sqrt((p3.x-self.x)**2+(p3.y-self.y)**2)):
-            return p2
-        else:
+        if math.sqrt((p2.x-self.x)**2+(p2.y-self.y)**2) > (math.sqrt((p3.x-self.x)**2+(p3.y-self.y)**2)):
             return p3
+        else:
+            return p2
 
+    def half_to(self,p2):
+        p2.x = 0.5 * (self.start_x + self.x)
+        p2.y = 0.5 * (self.start_y + self.y)
+        p2 = Point(p2.x,p2.y)
+        return p2
 
 
 
@@ -1077,6 +1082,32 @@ def run_test_halfway_to():
     print('-----------------------------------------------------------')
     print('Testing the   halfway_to   method of the Point class.')
     print('-----------------------------------------------------------')
+
+    p1 = Point(10, 20)
+    p2 = Point(30, 100)
+
+    print()
+    print('Should be: Point(20.0, 60.0)')
+    print('Actual is:', p1.halfway_to(p2))
+    print('Should be: Point(20.0, 60.0)')
+    print('Actual is:', p2.halfway_to(p1))
+
+    print()
+    print('Should be: Point(10.0, 20.0)')
+    print('Actual is:', p1.halfway_to(p1))
+
+    p3 = Point(-10, 20)
+    p4 = Point(30, -100)
+
+    print()
+    print('Should be: Point(10.0, -40.0)')
+    print('Actual is:', p3.halfway_to(p4))
+    print('Should be: Point(10.0, -40.0)')
+    print('Actual is:', p3.halfway_to(p4))
+
+    print()
+    print('Should be: Point(-10.0, 20.0)')
+    print('Actual is:', p3.halfway_to(p3))
 
 
 # ------------------------------------------------------------------------------
