@@ -76,7 +76,7 @@ class Point(object):
     def get_distance_from_start(start,self,Point):
         start.x = Point.x - self.x
         start.y = Point.y - self.y
-        
+
 
 
 def run_test_init():
