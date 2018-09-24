@@ -93,7 +93,7 @@ class Point(object):
         else:
             return p2
 
-    def halfway_to(self,p2,p3):
+    def halfway_to(self,p2):
         p2 = Point(p2.x,p2.y)
         p3x = 0.5 * (p2.x + self.x)
         p3y = 0.5 * (p2.y + self.y)
